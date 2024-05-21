@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const usedOrderBook = useOrderBook()
-const { selectedPair, searchingPair, selectedPairWithPriceChange, selectedPairWithVolume } = usedOrderBook
+const { selectedPair, searchingPair, selectedPairWithHighPrice, selectedPairWithLowPrice, selectedPairWithPriceChange, selectedPairWithVolume } = usedOrderBook
 
 provide('usedOrderBook', usedOrderBook)
 </script>
@@ -23,19 +23,19 @@ provide('usedOrderBook', usedOrderBook)
         </div>
         <div>
           <div>24h High</div>
-          <div>...</div>
+          <div>{{ selectedPairWithHighPrice }}</div>
         </div>
         <div>
           <div>24h Low</div>
-          <div>...</div>
+          <div>
+            {{ selectedPairWithLowPrice }}
+          </div>
         </div>
         <div>
-          <div>24h Volume(BTC)</div>
-          <div>{{ selectedPairWithVolume }}</div>
-        </div>
-        <div>
-          <div>24h Volume(USDT)</div>
-          <div>...</div>
+          <div>24h Volume</div>
+          <div>
+            {{ selectedPairWithVolume }}
+          </div>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ import { getAllPairs, getPair } from '~/apis/orderBook'
 export function useOrderBook() {
   const searchingPair = ref<string>()
   const selectedPair = ref<string>()
-  const extraPair = ref({ volume: 0, price_change: 0 })
+  const extraPair = ref({ volume: 0, price_change: 0, high_price: 0, low_price: 0 })
 
   const { execute: executePairList, data: dataPairList, isFinished: isFinishedPairList } = getAllPairs()
   const { execute: executePairDetail, data: dataPairDetail } = getPair(selectedPair as any)
@@ -49,6 +49,8 @@ export function useOrderBook() {
   return {
     searchingPair,
     selectedPair,
+    selectedPairWithHighPrice: computed(() => extraPair.value?.high_price),
+    selectedPairWithLowPrice: computed(() => extraPair.value?.low_price),
     selectedPairWithPriceChange: computed(() => extraPair.value?.price_change),
     selectedPairWithVolume: computed(() => extraPair.value?.volume),
     extraPair,

@@ -8,10 +8,10 @@ const { pricesWithAsk } = inject('usedOrderBook') as ReturnType<typeof useOrderB
       <thead class="bg-gray-50 text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
         <tr>
           <th scope="col" class="px-6 py-3">
-            Price(USDT)
+            Price
           </th>
           <th scope="col" class="px-6 py-3">
-            Amount(BTC)
+            Amount
           </th>
           <th scope="col" class="px-6 py-3">
             Total
