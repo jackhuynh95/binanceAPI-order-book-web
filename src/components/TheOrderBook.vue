@@ -8,8 +8,8 @@ provide('usedOrderBook', usedOrderBook)
 <template>
   <div class="space-y-10">
     <div>
-      <div class="inline-flex items-center space-x-10">
-        <h1 class="font-bold uppercase">
+      <div class="inline-flex items-start space-x-10">
+        <h1 class="pt-4 font-bold uppercase">
           {{ selectedPair }}
         </h1>
         <TheSearch v-model="searchingPair" class="w-[300px]" />

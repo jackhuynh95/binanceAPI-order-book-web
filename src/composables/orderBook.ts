@@ -7,7 +7,8 @@ export function useOrderBook() {
   const { execute: executePairList, data: dataPairList, isFinished: isFinishedPairList } = getAllPairs()
   const { execute: executePairDetail, data: dataPairDetail } = getPair(selectedPair as any)
 
-  const pairs = computed<string>(() => dataPairList.value.result)
+  const pairs = computed<string[]>(() => dataPairList.value?.result)
+  const pairsWithFiltered = computed<string[]>(() => searchingPair.value ? pairs.value?.filter(pair => pair.includes(searchingPair.value || '')) : pairs.value)
   const prices = computed(() => dataPairDetail.value?.result)
 
   until(isFinishedPairList).toBeTruthy().then(() => {
@@ -29,7 +30,7 @@ export function useOrderBook() {
   return {
     searchingPair,
     selectedPair,
-    pairs,
+    pairs: pairsWithFiltered,
     prices,
     pricesWithBid: computed(() => prices.value && JSON.parse(prices.value?.bids)),
     pricesWithAsk: computed(() => prices.value && JSON.parse(prices.value?.asks)),
