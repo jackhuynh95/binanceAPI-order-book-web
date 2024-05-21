@@ -10,12 +10,21 @@ export function useOrderBook() {
   const pairs = computed<string>(() => dataPairList.value.result)
   const prices = computed(() => dataPairDetail.value?.result)
 
-  onMounted(executePairList)
   until(isFinishedPairList).toBeTruthy().then(() => {
     selectedPair.value = pairs.value?.[0]
   })
 
   watch(selectedPair, executePairDetail)
+  const { pause, resume, isActive } = useIntervalFn(executePairDetail, 1000)
+
+  onMounted(() => {
+    executePairList()
+    !isActive.value && resume()
+  })
+
+  onBeforeUnmount(() => {
+    isActive.value && pause()
+  })
 
   return {
     searchingPair,
