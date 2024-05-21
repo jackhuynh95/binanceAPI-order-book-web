@@ -7,6 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    copy: typeof import('./components/TheInput copy.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
@@ -17,5 +18,6 @@ declare module 'vue' {
     TheInput: typeof import('./components/TheInput.vue')['default']
     TheOrderBook: typeof import('./components/TheOrderBook.vue')['default']
     ThePINInput: typeof import('./components/ThePINInput.vue')['default']
+    TheSearch: typeof import('./components/TheSearch.vue')['default']
   }
 }
