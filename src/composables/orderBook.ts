@@ -5,6 +5,7 @@ import { getAllPairs, getPair } from '~/apis/orderBook'
 export function useOrderBook() {
   const searchingPair = ref<string>()
   const selectedPair = ref<string>()
+  const extraPair = ref({ volume: 0, price_change: 0 })
 
   const { execute: executePairList, data: dataPairList, isFinished: isFinishedPairList } = getAllPairs()
   const { execute: executePairDetail, data: dataPairDetail } = getPair(selectedPair as any)
@@ -35,6 +36,10 @@ export function useOrderBook() {
     useSocket().on('pair-info', (response) => {
       dataPairDetail.value = response
     })
+
+    useSocket().on('pair-extra', (response) => {
+      extraPair.value = response.result
+    })
   })
 
   onBeforeUnmount(() => {
@@ -44,6 +49,9 @@ export function useOrderBook() {
   return {
     searchingPair,
     selectedPair,
+    selectedPairWithPriceChange: computed(() => extraPair.value?.price_change),
+    selectedPairWithVolume: computed(() => extraPair.value?.volume),
+    extraPair,
     pairs: pairsWithFiltered,
     prices,
     pricesWithBid: computed(() => prices.value && JSON.parse(prices.value?.bids)),
