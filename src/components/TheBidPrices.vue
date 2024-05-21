@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+const { pricesWithBid } = inject('usedOrderBook') as ReturnType<typeof useOrderBook>
 </script>
 
 <template>
@@ -18,15 +19,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="border-b bg-white dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
+        <tr v-for="(priceBid, idx) in pricesWithBid" :key="idx" class="border-b bg-white dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
           <th scope="row" class="whitespace-nowrap px-6 py-4 text-gray-900 font-medium dark:text-red">
-            Apple MacBook Pro 17"
+            {{ priceBid[0] }}
           </th>
           <td class="px-6 py-4">
-            Silver
+            {{ priceBid[1] }}
           </td>
           <td class="px-6 py-4">
-            Laptop
+            {{ priceBid[0] * priceBid[1] }}
           </td>
         </tr>
       </tbody>

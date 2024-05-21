@@ -1,14 +1,18 @@
 <script lang="ts" setup>
+const usedOrderBook = useOrderBook()
+const { selectedPair, searchingPair } = usedOrderBook
+
+provide('usedOrderBook', usedOrderBook)
 </script>
 
 <template>
   <div class="space-y-10">
     <div>
       <div class="inline-flex items-center space-x-10">
-        <h1 class="font-bold">
-          BTC/USDT
+        <h1 class="font-bold uppercase">
+          {{ selectedPair }}
         </h1>
-        <TheSearch class="w-[300px]" />
+        <TheSearch v-model="searchingPair" class="w-[300px]" />
       </div>
     </div>
     <div>

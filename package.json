@@ -39,6 +39,8 @@
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue-macros/volar": "^0.18.11",
     "@vue/test-utils": "^2.4.4",
+    "@vueuse/integrations": "^10.9.0",
+    "axios": "^1.7.1",
     "critters": "^0.0.21",
     "cross-env": "^7.0.3",
     "cypress": "^13.6.6",
