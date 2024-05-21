@@ -8,9 +8,17 @@ class SocketIO extends EventEmitter {
   constructor(url: string) {
     super()
     this._socket = io(url)
-    this._socket.on('message', (msg) => {
-      this.emit('message', msg)
+    this._socket.on('message', ([eventName, eventData]) => {
+      this.emit(eventName, eventData)
     })
+  }
+
+  sendMessage(eventName: string, eventData: any) {
+    this._socket?.emit('message', [eventName, eventData])
+  }
+
+  get socket() {
+    return this._socket
   }
 }
 

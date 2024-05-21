@@ -16,7 +16,10 @@ export function useOrderBook() {
     selectedPair.value = pairs.value?.[0]
   })
 
-  watch(selectedPair, executePairDetail)
+  watch(selectedPair, () => {
+    executePairDetail()
+    useSocket().sendMessage('pair-token', selectedPair.value)
+  })
   // [Deprecated] Internal Refetch per 1 second
   // const { pause, resume, isActive } = useIntervalFn(executePairDetail, 1000)
 
@@ -24,8 +27,8 @@ export function useOrderBook() {
     executePairList()
     // !isActive.value && resume()
 
-    useSocket().on('message', () => {
-      executePairDetail()
+    useSocket().on('pair-info', (response) => {
+      dataPairDetail.value = response
     })
   })
 
