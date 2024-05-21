@@ -1,3 +1,4 @@
+import { useSocket } from '~/apis/socketIO'
 import { getAllPairs, getPair } from '~/apis/orderBook'
 
 export function useOrderBook() {
@@ -16,15 +17,20 @@ export function useOrderBook() {
   })
 
   watch(selectedPair, executePairDetail)
-  const { pause, resume, isActive } = useIntervalFn(executePairDetail, 1000)
+  // [Deprecated] Internal Refetch per 1 second
+  // const { pause, resume, isActive } = useIntervalFn(executePairDetail, 1000)
 
   onMounted(() => {
     executePairList()
-    !isActive.value && resume()
+    // !isActive.value && resume()
+
+    useSocket().on('message', () => {
+      executePairDetail()
+    })
   })
 
   onBeforeUnmount(() => {
-    isActive.value && pause()
+    // isActive.value && pause()
   })
 
   return {
