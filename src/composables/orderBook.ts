@@ -1,3 +1,4 @@
+import { promiseTimeout } from '@vueuse/core'
 import { useSocket } from '~/apis/socketIO'
 import { getAllPairs, getPair } from '~/apis/orderBook'
 
@@ -18,7 +19,11 @@ export function useOrderBook() {
 
   watch(selectedPair, () => {
     executePairDetail()
-    useSocket().sendMessage('pair-token', selectedPair.value)
+
+    // delay 500 milliseconds for connection in very first time
+    promiseTimeout(500).then(() => {
+      useSocket().sendMessage('pair-token', selectedPair.value)
+    })
   })
   // [Deprecated] Internal Refetch per 1 second
   // const { pause, resume, isActive } = useIntervalFn(executePairDetail, 1000)
