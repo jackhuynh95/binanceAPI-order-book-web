@@ -39,6 +39,8 @@ src folder [in here](https://github.com/jackhuynh95/binanceAPI-order-book-web/tr
 - `types` type, inteface, enum
 - `utils` Typescript helper libraries
 
+<br>
+
 ## Features
 
 - ⚡️ [Vue 3](https://github.com/vuejs/core), [Vite](https://github.com/vitejs/vite), [pnpm](https://pnpm.io/), [esbuild](https://github.com/evanw/esbuild) - born with fastness
