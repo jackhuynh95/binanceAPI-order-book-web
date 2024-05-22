@@ -39,7 +39,14 @@ provide('usedOrderBook', usedOrderBook)
         </div>
       </div>
     </div>
-    <TheBidPrices class="mx-auto w-1/2" />
-    <TheAskPrices class="mx-auto w-1/2" />
+    <div class="grid grid-cols-2 mx-auto w-3/4 content-end">
+      <div class="space-y-5">
+        <TheBidPrices />
+        <TheAskPrices />
+      </div>
+      <div class="self-end">
+        <TheChart />
+      </div>
+    </div>
   </div>
 </template>
