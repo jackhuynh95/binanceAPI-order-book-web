@@ -1,12 +1,4 @@
 <p align='center'>
-  <video src='https://github.com/jackhuynh95/pin-input/assets/26354519/ac3f8525-f2c4-4806-b355-1278aa57fcdd' alt='Vitesse - Opinionated Vite Starter Template' width='600'/>
-</p>
-
-<p align='center'>
-  <image src='https://github.com/jackhuynh95/pin-input/assets/26354519/608377e8-4c62-446b-a3e5-edb8d025f193' alt='Vitesse - Opinionated Vite Starter Template' width='600'/>
-</p>
-
-<p align='center'>
 Mocking up web app with <b>Vitesse</b><sup><em>(speed)</em></sup><br>
 </p>
 
