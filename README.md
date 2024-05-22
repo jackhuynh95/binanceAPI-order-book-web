@@ -21,6 +21,24 @@ Mocking up web app with <b>Vitesse</b><sup><em>(speed)</em></sup><br>
 
 <br>
 
+## Project structure
+
+src folder [in here](https://github.com/jackhuynh95/binanceAPI-order-book-web/tree/main/src):
+
+- `apis` call REST APIS, WEB SOCKET
+- `assets` images, icons
+- `components` Vue Component
+- `composables (hooks)` Vue Composition API (similar to mixins in the Options API in Vue2)
+- `constants` Constant Data
+- `directives` Vue Custom Directive
+- `layouts` Router based layout
+- `modules` configuration language, store, theme, icon and other
+- `pages` Router based page
+- `store` Vue Store (similar to Vuex in Vue2)
+- `styles` stylus and css
+- `types` type, inteface, enum
+- `utils` Typescript helper libraries
+
 ## Features
 
 - ⚡️ [Vue 3](https://github.com/vuejs/core), [Vite](https://github.com/vitejs/vite), [pnpm](https://pnpm.io/), [esbuild](https://github.com/evanw/esbuild) - born with fastness
